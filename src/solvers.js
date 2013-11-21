@@ -35,7 +35,7 @@ window.countNRooksSolutions = function(n){
 
   var countRooks = function(board,row,col){
     board.togglePiece(row,col);
-    if (n === 3){
+    if (n === 2){
       debugger;
     }
     if (!board.hasAnyRooksConflicts()){
@@ -43,7 +43,9 @@ window.countNRooksSolutions = function(n){
         solutionCount++;
         return;
       }
-      countRooks(board,row+1,1);
+      for (var i = 0 ; i < n ;i++) {
+        countRooks(board,row+1,i);
+      }
     } else {
       board.togglePiece(row,col);
       return;
