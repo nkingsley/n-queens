@@ -43,17 +43,17 @@ window.countNRooksSolutions = function(n){
         solutionCount++;
         return;
       }
-      for (var i = 0 ; i < n ; i++){
-        countRooks(board,row+1,i);
-      }
+      countRooks(board,row+1,1);
     } else {
       board.togglePiece(row,col);
       return;
     }
   };
   for (var i = 0 ; i < n ; i++){
-    var board = new Board({"n":n});
-    countRooks(board,0,i);
+    for (var j = 0 ; j < n ; j++){
+      var board = new Board({"n":n});
+      countRooks(board,j,i);
+    }
   }
   return solutionCount;
 };
